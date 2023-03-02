@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="mxtechies.randomtexteffect.RandomTextEffect"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+    <name>Random Text Effect</name>
+    <description>Changes the text content randomly before finally showing original text</description>
+    <icon />
+    <properties>
+        <propertyGroup caption="General">
+            <property key="dataText" type="attribute">
+                <caption>Text to be displayed</caption>
+                <description>Effect text value</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                    <attributeType name="Integer" />
+                    <attributeType name="Decimal" />
+                </attributeTypes>
+            </property>
+            <property key="renderMode" type="enumeration" defaultValue="span">
+                <caption>Render Mode</caption>
+                <description>Tag to display Text</description>
+                <enumerationValues>
+                    <enumerationValue key="span">Text</enumerationValue>
+                    <enumerationValue key="p">Paragraph</enumerationValue>
+                    <enumerationValue key="h1">Heading 1</enumerationValue>
+                    <enumerationValue key="h2">Heading 2</enumerationValue>
+                    <enumerationValue key="h3">Heading 3</enumerationValue>
+                    <enumerationValue key="h4">Heading 4</enumerationValue>
+                    <enumerationValue key="h5">Heading 5</enumerationValue>
+                    <enumerationValue key="h6">Heading 6</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="timeGap" type="integer" defaultValue="60">
+                <caption>Timeout duration</caption>
+                <description>Enter time in milliseconds. Smaller the time faster the effect.</description>
+            </property>
+            <property key="fontColor" type="string">
+                <caption>Font Color</caption>
+                <description>Color of the text to be displayed.</description>
+            </property>
+            <property key="fontSize" type="string">
+                <caption>Font Size</caption>
+                <description>Size of the text to be displayed.</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
