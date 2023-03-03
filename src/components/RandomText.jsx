@@ -29,35 +29,40 @@ export function RandomText({ dataText, tagType, timeGap, fontSize, fontColor }) 
         clearInterval(interval);
 
         interval = setInterval(() => {
-            txtRef.current.innerText = txtRef.current.innerText
-                .split("")
-                .map((letter, index) => {
-                    if (index < iteration) {
-                        return dataSet[index];
-                    }
-
-                    // return Letters[Math.floor(Math.random() * 26)];
-                    if (dataDuplicateSet[index] == "+") {
-                        if (dataSet[index] == dataSet[index].toUpperCase()) {
-                            if (dataSet[index] == dataSet[index].toLowerCase()) return " ";
+            if (txtRef?.current?.innerText) {
+                txtRef.current.innerText = txtRef.current.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return dataSet[index];
                         }
-                    }
 
-                    if (dataSet[index] == dataSet[index].toUpperCase()) {
-                        return Letters[Math.floor(Math.random() * 26)];
-                    } else {
-                        return letters[Math.floor(Math.random() * 26)];
-                    }
-                })
-                .join("");
+                        if (dataDuplicateSet[index] == "+") {
+                            if (dataSet[index] == dataSet[index].toUpperCase()) {
+                                if (dataSet[index] == dataSet[index].toLowerCase()) return " ";
+                            }
+                        }
 
-            if (iteration >= dataSet.length) {
+                        if (dataSet[index] == dataSet[index].toUpperCase()) {
+                            return Letters[Math.floor(Math.random() * 26)];
+                        } else {
+                            return letters[Math.floor(Math.random() * 26)];
+                        }
+                    })
+                    .join("");
+
+                if (iteration >= dataSet.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1;
+            } else {
                 clearInterval(interval);
-            }
 
-            iteration += 1;
+            }
         }, timeGap);
     };
+
 
     switch (tagType) {
         case "span":
